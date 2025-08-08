@@ -130,11 +130,11 @@ spec:
             - name: LANGFLOW_AUTO_LOGIN
               value: "{{ .Values.langflow.backend.autoLogin | default "False" }}"
             - name: LANGFLOW_SUPERUSER
-              value: "{{ .Values.langflow.backend.superuser | default "admin" }}"
+            {{- toYaml .Values.langflow.backend.superuser }}
             - name: LANGFLOW_SUPERUSER_PASSWORD
-              value: "{{ .Values.langflow.backend.superuserPassword | default (randAlphaNum 32) }}"
+            {{- toYaml .Values.langflow.backend.superuserPassword }}
             - name: LANGFLOW_SECRET_KEY
-              value: "{{ .Values.langflow.backend.secretKey | default (randAlphaNum 32) }}"
+            {{- toYaml .Values.langflow.backend.secretKey }}"
             - name: LANGFLOW_NEW_USER_IS_ACTIVE
               value: "{{ .Values.langflow.backend.newUserIsActive | default "False" }}"
             {{- end }}
