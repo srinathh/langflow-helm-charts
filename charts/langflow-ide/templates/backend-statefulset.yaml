@@ -134,7 +134,7 @@ spec:
             - name: LANGFLOW_SUPERUSER_PASSWORD
             {{- toYaml .Values.langflow.backend.superuserPassword | nindent 14}}
             - name: LANGFLOW_SECRET_KEY
-            {{- toYaml .Values.langflow.backend.secretKey | nindent 14}}"
+            {{- toYaml .Values.langflow.backend.secretKey | nindent 14}}
             - name: LANGFLOW_NEW_USER_IS_ACTIVE
               value: "{{ .Values.langflow.backend.newUserIsActive | default "False" }}"
             {{- end }}
