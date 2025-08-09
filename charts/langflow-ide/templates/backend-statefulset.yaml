@@ -138,6 +138,16 @@ spec:
             - name: LANGFLOW_NEW_USER_IS_ACTIVE
               value: "{{ .Values.langflow.backend.newUserIsActive | default "False" }}"
             {{- end }}
+            {{- if .Values.langflow.backend.langsmith.enabled }}
+            - name: LANGSMITH_TRACING
+              value: "True"
+            - name: LANGSMITH_ENDPOINT
+            {{- toYaml .Values.langflow.backend.langsmith.endpoint | nindent 14 }}
+            - name: LANGSMITH_API_KEY
+            {{- toYaml .Values.langflow.backend.langsmith.apiKey | nindent 14 }}
+            - name: LANGSMITH_PROJECT
+            {{- toYaml .Values.langflow.backend.langsmith.project | nindent 14 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.langflow.backend.resources | nindent 12 }}
       {{- with .Values.langflow.backend.nodeSelector }}
